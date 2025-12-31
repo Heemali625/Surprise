@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Patrick Hand', cursive;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 0.6s ease;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.cartoon {
+  font-size: 64px;
+}
+
+.title {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.secondary {
+  background: #ddd;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.btns {
+  margin-top: 15px;
+}
+
+/* ---------- Envelope ---------- */
+.envelope {
+  width: 280px;
+  height: 180px;
+  position: relative;
+}
+
+.envelope .paper {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffc1cc;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+}
+
+.stamp {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: #ff5c8a;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  animation: pulse 1.5s infinite;
+}
+
+/* ---------- Letter ---------- */
+.letter-box {
+  background: #fffaf0;
+  padding: 25px;
+  border-radius: 24px;
+  max-width: 420px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.letter-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.pop {
+  animation: pulse 1s infinite alternate;
+}
+
+/* ---------- Final Text ---------- */
+.line {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+.delay1 { animation-delay: 0.6s; }
+.delay2 { animation-delay: 1.2s; }
+.delay3 { animation-delay: 1.8s; }
+.hidden {
+  display: none;
+}
+
+.line {
+  font-size: 20px;
+  margin: 12px 0;
+}
+
+.clickable {
+  cursor: pointer;
+  color: #ff4f7a;
+}
+
+.clickable:hover {
+  text-decoration: underline;
+}
+.hidden {
+  display: none;
+}
+
+.line {
+  font-size: 22px;
+  max-width: 320px;
+  animation: fadeIn 0.5s ease;
+  cursor: default;
+}
+
+.line.clickable {
+  cursor: pointer;
+  color: #ff4f7a;
+}
+
+/* ---------- Photo ---------- */
+.photo-frame {
+  width: 90%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+  margin-bottom: 20px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.love {
+  font-size: 28px;
+  animation: pulse 1.2s infinite;
+}
