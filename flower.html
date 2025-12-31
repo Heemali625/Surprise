@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hehe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #fffaf2;
+    font-family: 'Patrick Hand', cursive;
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    z-index: 2;
+  }
+
+  .text {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    color: #3b3b3b;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .bouquet {
+    width: clamp(180px, 60vw, 260px);
+    max-width: 100%;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .footer {
+    margin-top: 12px;
+    font-size: clamp(0.95rem, 3.5vw, 1.3rem);
+    color: #777;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* Petal shower */
+  .petal {
+    position: absolute;
+    top: -80px;
+    width: clamp(18px, 6vw, 40px);
+    pointer-events: none;
+    animation: fall linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- PETAL CONTAINER -->
+<div id="petals"></div>
+
+<div class="container">
+  <div>
+    <div class="text">
+      toh kya hua hum dur hai....<br>
+      saal khatam hone se pehle flowers toh<br>
+      <b>mera banda bhi deserve karta hai 🌸</b>
+    </div>
+
+    <img src="bouquet.png" class="bouquet" alt="Bouquet">
+
+    <div class="footer">~ with lots of love, always ~</div>
+  </div>
+</div>
+
+<script>
+  const petalContainer = document.getElementById("petals");
+
+  function createPetal() {
+    const petal = document.createElement("img");
+    petal.src = "petals.png";
+    petal.classList.add("petal");
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = (7 + Math.random() * 4) + "s";
+
+    petalContainer.appendChild(petal);
+
+    setTimeout(() => {
+      petal.remove();
+    }, 12000);
+  }
+
+  setInterval(createPetal, 600);
+</script>
+
+</body>
+</html>
