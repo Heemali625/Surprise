@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For You 🎶</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #fffaf2;
+    font-family: 'Patrick Hand', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .screen {
+    padding: 20px;
+    max-width: 360px;
+    width: 100%;
+  }
+
+  .start {
+    font-size: 1.4rem;
+    color: #444;
+    cursor: pointer;
+  }
+
+  .hint {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 10px;
+  }
+
+  .lyrics {
+    display: none;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-line;
+    min-height: 160px;
+  }
+
+  .footer {
+    margin-top: 18px;
+    font-size: 1rem;
+    color: #777;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="screen" onclick="startSong()">
+  <div class="start" id="startText">
+    tap to play 🎧<br>
+    and read something for you
+  </div>
+
+  <div class="lyrics" id="lyrics"></div>
+
+  <div class="footer">~ with love, always ~</div>
+</div>
+
+<audio id="music" src="song.mp3"></audio>
+
+<script>
+  const lyricsLines = [
+    "Baatein zaroori hain, tera milna bhi zaroori",
+    "Maine mita deni ye jo teri meri doori",
+    "",
+    "Jhoothi hain wo raahein saari duniya ki",
+    "Ishq jahaan naa chale",
+    "",
+    "Tera hona mera hona",
+    "Kya hona agar naa dono mile?",
+    "",
+    "Tu pehla-pehla pyaar hai mera"
+     ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+
+  const lyricsDiv = document.getElementById("lyrics");
+  const startText = document.getElementById("startText");
+  const music = document.getElementById("music");
+
+  function startSong() {
+    startText.style.display = "none";
+    lyricsDiv.style.display = "block";
+    music.play();
+    typeLine();
+    document.querySelector(".screen").onclick = null;
+  }
+
+  function typeLine() {
+    if (lineIndex >= lyricsLines.length) return;
+
+    const currentLine = lyricsLines[lineIndex];
+
+    if (charIndex < currentLine.length) {
+      lyricsDiv.textContent += currentLine.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeLine, 60);
+    } else {
+      lyricsDiv.textContent += "\n";
+      lineIndex++;
+      charIndex = 0;
+      setTimeout(typeLine, 700);
+    }
+  }
+</script>
+
+</body>
+</html>
